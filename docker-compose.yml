@@ -1,0 +1,6 @@
+services:
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    platform: linux/amd64
