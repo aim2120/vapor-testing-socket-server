@@ -1,0 +1,23 @@
+name: Create Release
+
+permissions:
+  contents: write
+
+on:
+  push:
+    tags:
+      - "*.*.*"
+
+jobs:
+  build:
+    name: Create Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: Release ${{ github.ref }}
+          generateReleaseNotes: true
