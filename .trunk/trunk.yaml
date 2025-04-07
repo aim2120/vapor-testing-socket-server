@@ -24,6 +24,10 @@ lint:
     - prettier@3.5.3
     - trufflehog@3.88.22
     - yamllint@1.37.0
+  ignore:
+    - linters: [ALL]
+      paths:
+        - Sources/**/*.md
 actions:
   enabled:
     - trunk-announce
