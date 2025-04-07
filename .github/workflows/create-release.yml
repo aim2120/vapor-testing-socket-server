@@ -17,7 +17,7 @@ jobs:
       - name: Validate Tag
         id: validate-tag
         run: |
-          if [[ ! "${{ github.ref }}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+          if [[ "${{ github.ref_name }}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
             echo "valid_semver=true" >> "$GITHUB_OUTPUT"
           else
             echo "valid_semver=false" >> "$GITHUB_OUTPUT"
