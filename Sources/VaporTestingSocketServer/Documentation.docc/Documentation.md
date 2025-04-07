@@ -96,7 +96,7 @@ func messageReturnsOkOnSuccessfulAlert() async throws {
 
             // (4)
             try await app.testing(method: .unixDomainSocket(path: tempSocket.path))
-                .test(.GET, "message", beforeResponse: { res async throws in 
+                .test(.POST, "message", beforeResponse: { res async throws in 
                     try req.body.writeString("stub_ok", encoding: .utf8)
                 }, afterResponse: { res async throws in
                     #expect(res.status == .ok)
