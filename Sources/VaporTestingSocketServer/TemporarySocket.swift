@@ -66,7 +66,7 @@ public struct TemporarySocket {
 
     /// If it was necessary to change working directories to use a shorter UNIX domain socket path, this function will change the directory back to the previously saved working directory.
     ///
-    /// - Note: This is called automatically when an instance of this type deinits.
+    /// - Note: This is called at the end of ``withTemporarySocket(function:_:)-52exl`` and ``withTemporarySocket(function:_:)-43u4g``.
     public mutating func restoreSavedCurrentWorkingDirectory() {
         if let savedCurrentWorkingDirectory {
             if FileManager.default.changeCurrentDirectoryPath(savedCurrentWorkingDirectory) {
