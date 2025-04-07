@@ -7,6 +7,7 @@
 
 import AsyncHTTPClient
 import NIOCore
+import NIOPosix
 import NIOTransportServices
 import Vapor
 import VaporTesting
@@ -27,7 +28,13 @@ extension Application {
         func performTest(request: TestingHTTPRequest) async throws -> TestingHTTPResponse {
             // modified version of Application.Live from VaporTestUtils
             try await app.server.start(address: .unixDomainSocket(path: socketPath))
-            let client = HTTPClient(eventLoopGroup: NIOTSEventLoopGroup.singleton)
+            let eventLoopGroup: any EventLoopGroup
+            #if canImport(Network)
+                eventLoopGroup = NIOTSEventLoopGroup.singleton
+            #else
+                eventLoopGroup = MultiThreadedEventLoopGroup.singleton
+            #endif
+            let client = HTTPClient(eventLoopGroup: eventLoopGroup)
 
             do {
                 var path = request.url.path

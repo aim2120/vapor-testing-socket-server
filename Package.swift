@@ -6,6 +6,7 @@ private let library: Target = .target(
     name: "VaporTestingSocketServer",
     dependencies: [
         .product(name: "NIOCore", package: "swift-nio"),
+        .product(name: "NIOPosix", package: "swift-nio"),
         .product(name: "NIOTransportServices", package: "swift-nio-transport-services"),
         .product(name: "AsyncHTTPClient", package: "async-http-client"),
         .product(name: "Vapor", package: "vapor"),
