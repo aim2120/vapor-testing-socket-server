@@ -4,9 +4,13 @@ A supplement to `VaporTesting` to work with an application over UNIX domain sock
 
 ## Overview
 
-The [vapor](https://github.com/vapor/vapor) library already ships with a very useful `VaporTesting` library that supports "in-memory" and "live" TCP server testing.
+The [Vapor](https://github.com/vapor/vapor) library already ships with a very useful `VaporTesting` library that supports "in-memory" and "live" TCP server testing.
 However, this SDK does not support server testing over UDS.
 This package was created to fill this need.
+
+- Note: This library is only available for use in Debug builds.
+This is due to the need to use a `@testable` import for the `VaporTesting` library target.
+Feel free to open an issue if this is problematic for your own usage.
 
 ### Why use UDS for Vapor server testing?
 
