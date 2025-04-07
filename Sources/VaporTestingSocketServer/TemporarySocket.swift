@@ -8,7 +8,6 @@
 import AsyncHTTPClient
 import Foundation
 import NIOCore
-import struct System.FileDescriptor
 
 /// Creates a temporary UNIX domain socket for usage within the passed closure's scope.
 ///
